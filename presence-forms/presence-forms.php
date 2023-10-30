@@ -25,5 +25,5 @@ if ( ! defined( 'PF_PLUGIN_URI' ) ) {
 
 require_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-include_once dirname( __FILE__ ) . '/includes/class-pfcore.php';
+include_once __DIR__ . '/includes/class-pfcore.php';
 $GLOBALS['PfCore'] = PfCore::instance();
