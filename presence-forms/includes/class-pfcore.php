@@ -80,6 +80,7 @@ if ( ! class_exists( 'PfCore' ) ) {
 		 */
 		public function init(): void {
 			$this->initialise_localisation();
+            $this->add_shortcodes();
 			do_action( 'presence_forms_init' );
 		}
 
@@ -100,8 +101,7 @@ if ( ! class_exists( 'PfCore' ) ) {
 		/**
 		 * Add the Tinnitus forms post type and Tinnitus forms Category type.
 		 */
-		public function add_post_type(): void
-        {
+		public function add_post_type(): void {
 			register_post_type(
 				'tinnitus_entries',
 				array(
@@ -201,8 +201,7 @@ if ( ! class_exists( 'PfCore' ) ) {
 		/**
 		 * Add meta box support.
 		 */
-		public function add_meta_box_support(): void
-        {
+		public function add_meta_box_support(): void {
 			include_once PF_ABSPATH . '/includes/metaboxes/class-metabox.php';
 			new Metabox(
 				'tinnitus_entries_metabox',
@@ -255,6 +254,46 @@ if ( ! class_exists( 'PfCore' ) ) {
 		private function actions_and_filters(): void {
 			add_action( 'after_setup_theme', array( $this, 'pluggable' ) );
 			add_action( 'init', array( $this, 'init' ) );
+		}
+
+		/**
+		 * Add the Form shortcodes.
+		 */
+		public function add_shortcodes(): void {
+			add_shortcode( 'pf_form_tq', array( $this, 'do_shortcode_tq_form' ) );
+			add_shortcode( 'pf_form_thi', array( $this, 'do_shortcode_thi_form' ) );
+		}
+
+		/**
+		 * Do the shortcode of a TQ form.
+		 *
+		 * @param $atts
+		 * @return false|string
+		 */
+		public function do_shortcode_tq_form( $atts ): bool|string {
+			if ( gettype( $atts ) != 'array' ) {
+				$atts = array();
+			}
+
+			include_once PF_ABSPATH . 'includes/shortcodes/class-pf-shortcode-tq.php';
+			$shortcode = new Pf_Shortcode_Tq( $atts );
+			return $shortcode->do_shortcode();
+		}
+
+		/**
+		 * Do the shortcode of a THI form.
+		 *
+		 * @param $atts
+		 * @return false|string
+		 */
+		public function do_shortcode_thi_form( $atts ): bool|string {
+			if ( gettype( $atts ) != 'array' ) {
+				$atts = array();
+			}
+
+			include_once PF_ABSPATH . 'includes/shortcodes/class-pf-shortcode-thi.php';
+			$shortcode = new Pf_Shortcode_Tq( $atts );
+			return $shortcode->do_shortcode();
 		}
 	}
 }
