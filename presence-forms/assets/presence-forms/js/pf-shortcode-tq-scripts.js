@@ -422,14 +422,36 @@ createApp(
 					}
 				}
 				],
-				score: 0,
 			}
 		},
 		mounted() {
-
+			this.questions.forEach(
+				(question) => {
+				}
+			);
 		},
 		methods: {
 
+		},
+		computed: {
+			score: function () {
+				return this.questions.map(
+					(question) => {
+                    return question.selected;
+					}
+				).reduce(
+					(previousValue, currentValue) => {
+                    if (previousValue === "default" || previousValue === null) {
+                        return null;
+                    } else if (currentValue === "default" || currentValue === null) {
+                    return null;
+                    } else {
+								return parseInt( previousValue, 10 ) + parseInt( currentValue, 10 );
+						}
+						},
+					0
+				);
+			}
 		}
 	}
 ).mount( '#pf-shortcode-tq-container-' + pfShortcodeTqId );

@@ -246,6 +246,7 @@ if ( ! class_exists( 'Metabox' ) ) {
 						if ( $value_updated ) {
 							update_post_meta( $post_id, $field['id'], $new );
 						}
+                        // phpcs:ignore Universal.ControlStructures.DisallowLonelyIf.Found -- The control structure below is more clear.
 					} else {
 						// Value has been removed or is not set.
 						if ( $field['required'] ) {

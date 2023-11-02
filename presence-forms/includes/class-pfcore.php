@@ -80,7 +80,7 @@ if ( ! class_exists( 'PfCore' ) ) {
 		 */
 		public function init(): void {
 			$this->initialise_localisation();
-            $this->add_shortcodes();
+			$this->add_shortcodes();
 			do_action( 'presence_forms_init' );
 		}
 
