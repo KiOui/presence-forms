@@ -252,6 +252,10 @@ if ( ! class_exists( 'PfCore' ) ) {
 		 * Add actions and filters.
 		 */
 		private function actions_and_filters(): void {
+			include_once PF_ABSPATH . '/includes/class-pfsettings.php';
+
+			PFSettings::instance();
+
 			add_action( 'after_setup_theme', array( $this, 'pluggable' ) );
 			add_action( 'init', array( $this, 'init' ) );
 		}

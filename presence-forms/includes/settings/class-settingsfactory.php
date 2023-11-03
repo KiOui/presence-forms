@@ -9,11 +9,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-include_once AA_ABSPATH . 'includes/settings/class-settings.php';
-include_once AA_ABSPATH . 'includes/settings/class-settingspage.php';
-include_once AA_ABSPATH . 'includes/settings/class-settingsgroup.php';
-include_once AA_ABSPATH . 'includes/settings/class-settingssection.php';
-include_once AA_ABSPATH . 'includes/settings/class-settingsconfigurationexception.php';
+include_once PF_ABSPATH . 'includes/settings/class-settings.php';
+include_once PF_ABSPATH . 'includes/settings/class-settingspage.php';
+include_once PF_ABSPATH . 'includes/settings/class-settingsgroup.php';
+include_once PF_ABSPATH . 'includes/settings/class-settingssection.php';
+include_once PF_ABSPATH . 'includes/settings/class-settingsconfigurationexception.php';
 
 if ( ! class_exists( 'SettingsFactory' ) ) {
 	/**

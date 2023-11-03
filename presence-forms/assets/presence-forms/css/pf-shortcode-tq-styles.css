@@ -41,3 +41,25 @@
 	margin-top: 0;
 	margin-bottom: 5px;
 }
+
+.pf-tq-form-score {
+	padding: 14px 20px;
+	text-align: center;
+	background-color: green;
+	border: 1px solid green;
+	border-radius: 3px;
+	color: white;
+}
+
+.pf-tq-form-not-filled-in {
+	padding: 14px 20px;
+	text-align: center;
+	background-color: red;
+	border: 1px solid red;
+	border-radius: 3px;
+	color: white;
+}
+
+.pf-tq-form-button {
+
+}

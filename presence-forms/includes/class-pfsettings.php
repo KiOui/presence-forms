@@ -100,12 +100,12 @@ if ( ! class_exists( 'PFSettings' ) ) {
 		 * Execute custom actions.
 		 */
 		public function do_custom_actions() {
-			if ( get_current_screen()->id === 'toplevel_page_aa_admin_menu' ) {
+			if ( get_current_screen()->id === 'toplevel_page_pf_admin_menu' ) {
                 // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- We are passing the nonce to nonce verification.
-				if ( isset( $_POST['option_page'] ) && isset( $_POST['action'] ) && 'update' == $_POST['action'] && 'autotelex_automotive_settings' === $_POST['option_page'] && isset( $_POST['_wpnonce'] ) && wp_verify_nonce( wp_unslash( $_POST['_wpnonce'] ), 'autotelex_automotive_settings-options' ) ) {
+				if ( isset( $_POST['option_page'] ) && isset( $_POST['action'] ) && 'update' == $_POST['action'] && 'presence_forms_settings' === $_POST['option_page'] && isset( $_POST['_wpnonce'] ) && wp_verify_nonce( wp_unslash( $_POST['_wpnonce'] ), 'presence_forms_settings-options' ) ) {
 					$this->settings->update_settings( $_POST );
 					$this->settings->save_settings();
-					wp_redirect( '/wp-admin/admin.php?page=aa_admin_menu' );
+					wp_redirect( '/wp-admin/admin.php?page=pf_admin_menu' );
 					exit;
 				}
 			}

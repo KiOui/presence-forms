@@ -19,15 +19,38 @@ if ( ! function_exists( 'pf_get_settings_config' ) ) {
 	 */
 	function pf_get_settings_config(): array {
 		return array(
-			'group_name' => 'autotelex_automotive_settings',
-			'name' => 'autotelex_automotive_settings',
+			'group_name' => 'presence_forms_settings',
+			'name' => 'presence_forms_settings',
 			'settings' => array(
 				array(
-					'type'    => 'int',
-					'id'      => 'delete_entries_after',
-					'name'    => __( 'Delete entries after days', 'presence-forms' ),
-					'can_be_null' => null,
-					'hint'    => __( 'How many days should pass after which an entry is deleted. If no value is given entries will never be deleted.', 'presence-forms' ),
+					'type'    => 'text',
+					'id'      => 'tq_form_score_parameter_name',
+					'name'    => __( 'The GET parameter name of the parameter where the TQ score should be assigned to.', 'presence-forms' ),
+					'can_be_null' => false,
+					'default' => 'score',
+					'hint'    => __( 'When a score is calculated, a user will be redirected to a new page with this GET parameter set to the score the user had.', 'presence-forms' ),
+				),
+				array(
+					'type'    => 'text',
+					'id'      => 'tq_form_url',
+					'name'    => __( 'The URL of the page where the user should be redirected to when finishing the TQ form', 'presence-forms' ),
+					'can_be_null' => true,
+					'hint'    => __( 'When a score is calculated, a user will have the opportunity to contact the site owner. This is the page where the contact form resides.', 'presence-forms' ),
+				),
+				array(
+					'type'    => 'text',
+					'id'      => 'thi_form_score_parameter_name',
+					'name'    => __( 'The GET parameter name of the parameter where the THI score should be assigned to.', 'presence-forms' ),
+					'can_be_null' => false,
+					'default' => 'score',
+					'hint'    => __( 'When a score is calculated, a user will be redirected to a new page with this GET parameter set to the score the user had.', 'presence-forms' ),
+				),
+				array(
+					'type'    => 'text',
+					'id'      => 'thi_form_url',
+					'name'    => __( 'The URL of the page where the user should be redirected to when finishing the THI form', 'presence-forms' ),
+					'can_be_null' => true,
+					'hint'    => __( 'When a score is calculated, a user will have the opportunity to contact the site owner. This is the page where the contact form resides.', 'presence-forms' ),
 				),
 			),
 		);
@@ -59,11 +82,19 @@ if ( ! function_exists( 'pf_get_settings_screen_config' ) ) {
 					},
 					'settings_sections' => array(
 						array(
-							'id'       => 'data_protection',
-							'name'     => __( 'Data Protection', 'presence-forms' ),
+							'id'       => 'tq_form',
+							'name'     => __( 'TQ Form', 'presence-forms' ),
 							'settings' => array(
-								'authentication_settings_username',
-								'authentication_settings_password',
+								'tq_form_score_parameter_name',
+								'tq_form_url',
+							),
+						),
+						array(
+							'id'       => 'thi_form',
+							'name'     => __( 'THI Form', 'presence-forms' ),
+							'settings' => array(
+								'thi_form_score_parameter_name',
+								'thi_form_url',
 							),
 						),
 					),

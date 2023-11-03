@@ -9,8 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-include_once AA_ABSPATH . 'includes/settings/class-settingsconfigurationexception.php';
-include_once AA_ABSPATH . 'includes/settings/conditions/class-settingscondition.php';
+include_once PF_ABSPATH . 'includes/settings/class-settingsconfigurationexception.php';
+include_once PF_ABSPATH . 'includes/settings/conditions/class-settingscondition.php';
 
 if ( ! class_exists( 'SettingsField' ) ) {
 	/**

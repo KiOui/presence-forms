@@ -57,7 +57,8 @@ if ( ! class_exists( 'Pf_Shortcode_Tq' ) ) {
 		public function include_styles_and_scripts(): void {
 			wp_enqueue_style( 'pf-shortcode-tq-styles', PF_PLUGIN_URI . 'assets/presence-forms/css/pf-shortcode-tq-styles.css', array(), '1.0' );
 			wp_enqueue_script( 'vuejs', 'https://unpkg.com/vue@3/dist/vue.global.prod.js', array(), 'latest' );
-			wp_enqueue_script( 'pf-shortcode-tq-scripts', PF_PLUGIN_URI . 'assets/presence-forms/js/pf-shortcode-tq-scripts.js', array( 'vuejs' ), '1.0', true );
+			wp_enqueue_script( 'pf-shortcode-common-scripts', PF_PLUGIN_URI . 'assets/presence-forms/js/common.js', array(), '1.0' );
+			wp_enqueue_script( 'pf-shortcode-tq-scripts', PF_PLUGIN_URI . 'assets/presence-forms/js/pf-shortcode-tq-scripts.js', array( 'vuejs', 'pf-shortcode-common-scripts' ), '1.0', true );
 			wp_localize_script( 'pf-shortcode-tq-scripts', 'pfShortcodeTqId', $this->get_id() );
 		}
 
@@ -80,12 +81,28 @@ if ( ! class_exists( 'Pf_Shortcode_Tq' ) ) {
 						</div>
 					</div>
 					<div class="pf-result-container">
-						<div v-if="score !== null">
-							Je hebt {{ score }} gescoord op de test.
+						<div v-if="score !== null" class="pf-tq-form-score">
+							Je hebt <strong>{{ score }}</strong> gescoord op de test.
 						</div>
-						<div v-else>
+						<div v-else class="pf-tq-form-not-filled-in">
 							Beantwoord alle vragen om jouw score te zien.
 						</div>
+					</div>
+					<div v-if="score !== null" class="pf-result-summary">
+						<p>
+							Dit betekent dat je <strong>geen of zeer milde klachten</strong> ervaart van jouw tinnitus.
+							Wil je contact met ons opnemen of heb je vragen over de uitkomst? Aarzel dan niet om een
+							mail te sturen, te bellen of een Whatsapp te sturen.
+						</p>
+						<p>
+							Met de knop hier onder kun je gemakkelijk contact met ons opnemen. Jouw score wordt dan
+							meegestuurd met jouw bericht. Zo kunnen we je snel en gemakkelijk helpen.
+						</p>
+						<?php if ( ! is_null( PFSettings::instance()->get_settings()->get_value( 'tq_form_url' ) ) ) : ?>
+						<a href="<?php esc_url( PFSettings::instance()->get_settings()->get_value( 'tq_form_url' ) ); ?>" class="pf-tq-form-button">
+							Neem contact op
+						</a>
+						<?php endif; ?>
 					</div>
 				</div>
 			<?php

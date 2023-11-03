@@ -9,8 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-include_once AA_ABSPATH . 'includes/settings/fields/class-choicefield.php';
-include_once AA_ABSPATH . 'includes/settings/class-settingsconfigurationexception.php';
+include_once PF_ABSPATH . 'includes/settings/fields/class-choicefield.php';
+include_once PF_ABSPATH . 'includes/settings/class-settingsconfigurationexception.php';
 
 if ( ! class_exists( 'BoolField' ) ) {
 	/**

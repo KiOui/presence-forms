@@ -1,5 +1,7 @@
 let { createApp } = Vue;
 
+const COOKIE_NAME_TQ_FORM = "pf-tq-form";
+
 createApp(
 	{
 		data() {
@@ -425,13 +427,49 @@ createApp(
 			}
 		},
 		mounted() {
-			this.questions.forEach(
-				(question) => {
+			let cookie = getCookie(COOKIE_NAME_TQ_FORM);
+			if (cookie === null) {
+				this.reset();
+			} else {
+				try {
+					let setValues = JSON.parse(cookie);
+					if (typeof setValues === "object") {
+						this.questions.forEach(
+							(question, index) => {
+								if (index < setValues.length) {
+									question['selected'] = setValues[index];
+								} else {
+									question['selected'] = "default";
+								}
+							}
+						);
+					} else {
+						this.reset();
+					}
+				} catch {
+					this.reset();
 				}
-			);
+			}
+		},
+		watch: {
+			questions: {
+				handler(newValue, oldValue) {
+					let answers = this.questions.map((question) => {
+						return question.selected;
+					});
+					setListCookie(COOKIE_NAME_TQ_FORM, answers, 7);
+				},
+				deep: true
+			}
 		},
 		methods: {
-
+			reset() {
+				this.questions.forEach(
+					(question) => {
+						question['selected'] = 'default';
+					}
+				);
+			}
 		},
 		computed: {
 			score: function () {

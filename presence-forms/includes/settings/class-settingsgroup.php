@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-include_once AA_ABSPATH . 'includes/settings/class-settings.php';
+include_once PF_ABSPATH . 'includes/settings/class-settings.php';
 
 if ( ! class_exists( 'SettingsGroup' ) ) {
 	/**
