@@ -454,10 +454,7 @@ createApp(
 		watch: {
 			questions: {
 				handler(newValue, oldValue) {
-					let answers = this.questions.map((question) => {
-						return question.selected;
-					});
-					setListCookie(COOKIE_NAME_TQ_FORM, answers, 7);
+					this.saveToCookie();
 				},
 				deep: true
 			}
@@ -469,6 +466,15 @@ createApp(
 						question['selected'] = 'default';
 					}
 				);
+			},
+			saveToCookie() {
+				let answers = this.questions.map((question) => {
+					return question.selected;
+				});
+				setListCookie(COOKIE_NAME_TQ_FORM, answers, 7);
+			},
+			eraseAndRedirect(location) {
+				window.location.href = location;
 			}
 		},
 		computed: {

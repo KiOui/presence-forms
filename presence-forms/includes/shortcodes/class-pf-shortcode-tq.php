@@ -99,9 +99,9 @@ if ( ! class_exists( 'Pf_Shortcode_Tq' ) ) {
 							meegestuurd met jouw bericht. Zo kunnen we je snel en gemakkelijk helpen.
 						</p>
 						<?php if ( ! is_null( PFSettings::instance()->get_settings()->get_value( 'tq_form_url' ) ) ) : ?>
-						<a href="<?php esc_url( PFSettings::instance()->get_settings()->get_value( 'tq_form_url' ) ); ?>" class="pf-tq-form-button">
+						<button @click="eraseAndRedirect(`<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'tq_form_url' ) ); ?>?<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'tq_form_score_parameter_name' ) ); ?>=${this.score}`)" class="pf-tq-form-button">
 							Neem contact op
-						</a>
+						</button>
 						<?php endif; ?>
 					</div>
 				</div>
