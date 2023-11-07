@@ -296,7 +296,7 @@ if ( ! class_exists( 'PfCore' ) ) {
 			}
 
 			include_once PF_ABSPATH . 'includes/shortcodes/class-pf-shortcode-thi.php';
-			$shortcode = new Pf_Shortcode_Tq( $atts );
+			$shortcode = new Pf_Shortcode_Thi( $atts );
 			return $shortcode->do_shortcode();
 		}
 	}

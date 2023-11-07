@@ -72,7 +72,7 @@ createApp(
 					}
 				},
 				{
-					"question": "Door eht oorsuizen kost het me moeite te zeggen waar geluiden vandaan komen.",
+					"question": "Door het oorsuizen kost het me moeite te zeggen waar geluiden vandaan komen.",
 					"answers": {
 						"Juist": 2,
 						"Deels waar": 1,
