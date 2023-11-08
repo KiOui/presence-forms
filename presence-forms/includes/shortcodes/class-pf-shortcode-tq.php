@@ -98,8 +98,8 @@ if ( ! class_exists( 'Pf_Shortcode_Tq' ) ) {
 							Met de knop hier onder kun je gemakkelijk contact met ons opnemen. Jouw score wordt dan
 							meegestuurd met jouw bericht. Zo kunnen we je snel en gemakkelijk helpen.
 						</p>
-						<?php if ( ! is_null( PFSettings::instance()->get_settings()->get_value( 'tq_form_url' ) ) ) : ?>
-						<button @click="eraseAndRedirect(`<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'tq_form_url' ) ); ?>?<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'tq_form_score_parameter_name' ) ); ?>=${this.score}`)" class="pf-tq-form-button">
+						<?php if ( ! is_null( PFSettings::instance()->get_settings()->get_value( 'thi_form_url' ) ) ) : ?>
+						<button @click="eraseAndRedirect(`<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'thi_form_url' ) ); ?>?<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'tq_form_score_parameter_name' ) ); ?>=${this.score}`)" class="pf-tq-form-button">
 							Neem contact op
 						</button>
 						<?php endif; ?>

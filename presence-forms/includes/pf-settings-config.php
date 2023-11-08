@@ -24,30 +24,37 @@ if ( ! function_exists( 'pf_get_settings_config' ) ) {
 			'settings' => array(
 				array(
 					'type'    => 'text',
+					'id'      => 'tq_form_url',
+					'name'    => __( 'The URL of the page where the TQ form is present', 'presence-forms' ),
+					'can_be_null' => true,
+					'hint'    => __( 'When the THI form page is accessed without the TQ form parameter present in the query parameters, a user will get redirected to this URL.', 'presence-forms' ),
+				),
+				array(
+					'type'    => 'text',
 					'id'      => 'tq_form_score_parameter_name',
 					'name'    => __( 'The GET parameter name of the parameter where the TQ score should be assigned to.', 'presence-forms' ),
 					'can_be_null' => false,
-					'default' => 'score',
+					'default' => 'tq-score',
 					'hint'    => __( 'When a score is calculated, a user will be redirected to a new page with this GET parameter set to the score the user had.', 'presence-forms' ),
 				),
 				array(
 					'type'    => 'text',
-					'id'      => 'tq_form_url',
+					'id'      => 'thi_form_url',
 					'name'    => __( 'The URL of the page where the user should be redirected to when finishing the TQ form', 'presence-forms' ),
 					'can_be_null' => true,
-					'hint'    => __( 'When a score is calculated, a user will have the opportunity to contact the site owner. This is the page where the contact form resides.', 'presence-forms' ),
+					'hint'    => __( 'When a score is calculated, the user should move on to the next form (the THI form). This is the URL on the page where that form resides.', 'presence-forms' ),
 				),
 				array(
 					'type'    => 'text',
 					'id'      => 'thi_form_score_parameter_name',
 					'name'    => __( 'The GET parameter name of the parameter where the THI score should be assigned to.', 'presence-forms' ),
 					'can_be_null' => false,
-					'default' => 'score',
-					'hint'    => __( 'When a score is calculated, a user will be redirected to a new page with this GET parameter set to the score the user had.', 'presence-forms' ),
+					'default' => 'thi-score',
+					'hint'    => __( 'When a score is calculated, a user will be redirected to a new page with this GET parameter set to the score the user had. This should be different from the TQ GET parameter.', 'presence-forms' ),
 				),
 				array(
 					'type'    => 'text',
-					'id'      => 'thi_form_url',
+					'id'      => 'contact_form_url',
 					'name'    => __( 'The URL of the page where the user should be redirected to when finishing the THI form', 'presence-forms' ),
 					'can_be_null' => true,
 					'hint'    => __( 'When a score is calculated, a user will have the opportunity to contact the site owner. This is the page where the contact form resides.', 'presence-forms' ),
@@ -85,8 +92,9 @@ if ( ! function_exists( 'pf_get_settings_screen_config' ) ) {
 							'id'       => 'tq_form',
 							'name'     => __( 'TQ Form', 'presence-forms' ),
 							'settings' => array(
-								'tq_form_score_parameter_name',
 								'tq_form_url',
+								'tq_form_score_parameter_name',
+								'thi_form_url',
 							),
 						),
 						array(
@@ -94,7 +102,7 @@ if ( ! function_exists( 'pf_get_settings_screen_config' ) ) {
 							'name'     => __( 'THI Form', 'presence-forms' ),
 							'settings' => array(
 								'thi_form_score_parameter_name',
-								'thi_form_url',
+								'contact_form_url',
 							),
 						),
 					),

@@ -68,7 +68,12 @@ if ( ! class_exists( 'Pf_Shortcode_Thi' ) ) {
 		 * @return false|string
 		 */
 		public function do_shortcode(): bool|string {
+			$tq_form_score_parameter_name = PFSettings::instance()->get_settings()->get_value( 'tq_form_score_parameter_name' );
+			$tq_form_value = isset( $_GET[ $tq_form_score_parameter_name ] ) ? intval( $_GET[ $tq_form_score_parameter_name ] ) : 0;
 			ob_start(); ?>
+				<script>
+					const TQ_FORM_VALUE = <?php echo esc_attr( $tq_form_value ); ?>;
+				</script>
 				<div id="pf-shortcode-thi-container-<?php echo esc_attr( $this->id ); ?>" class="pf-container pf-shortcode-thi-container">
 					<div v-for="question in questions" class="pf-question">
 						<p><i v-if="question['selected'] !== 'default'" class="fa-solid fa-check pf-green"></i><i v-else class="fa-solid fa-times pf-red" style="margin-right: 2px;"></i> {{ question.question }}</p>
@@ -98,8 +103,8 @@ if ( ! class_exists( 'Pf_Shortcode_Thi' ) ) {
 							Met de knop hier onder kun je gemakkelijk contact met ons opnemen. Jouw score wordt dan
 							meegestuurd met jouw bericht. Zo kunnen we je snel en gemakkelijk helpen.
 						</p>
-						<?php if ( ! is_null( PFSettings::instance()->get_settings()->get_value( 'thi_form_url' ) ) ) : ?>
-						<button @click="eraseAndRedirect(`<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'thi_form_url' ) ); ?>?<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'thi_form_score_parameter_name' ) ); ?>=${this.score}`)" class="pf-thi-form-button">
+						<?php if ( ! is_null( PFSettings::instance()->get_settings()->get_value( 'contact_form_url' ) ) ) : ?>
+						<button @click="eraseAndRedirect(`<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'contact_form_url' ) ); ?>?<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'thi_form_score_parameter_name' ) ); ?>=${this.score}&<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'tq_form_score_parameter_name' ) ); ?>=${this.tq_form_value}`)" class="pf-thi-form-button">
 							Neem contact op
 						</button>
 						<?php endif; ?>

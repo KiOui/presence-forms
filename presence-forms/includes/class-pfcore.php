@@ -258,6 +258,10 @@ if ( ! class_exists( 'PfCore' ) ) {
 
 			add_action( 'after_setup_theme', array( $this, 'pluggable' ) );
 			add_action( 'init', array( $this, 'init' ) );
+
+			if ( ! is_admin() ) {
+				add_action( 'template_redirect', 'pf_check_redirect' );
+			}
 		}
 
 		/**
