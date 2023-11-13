@@ -93,41 +93,21 @@ if ( ! class_exists( 'Pf_Shortcode_Tq' ) ) {
 							<p>
 								Dit betekent dat je <strong>geen of zeer milde klachten</strong> ervaart van jouw tinnitus.
 							</p>
-							<p>
-								Deze scores geeft een indicatie van jouw klachten. Wil je graag precies weten hoeveel last
-								jij hebt en of we jou kunnen helpen om die last te verminderen? Plan dan een gratis gesprek
-								via onderstaande knop.
-							</p>
 						</div>
 						<div v-else-if="score < 47" class="pf-result-summary">
 							<p>
 								Dit betekent dat je <strong>milde of middelmatige klachten</strong> ervaart van jouw
 								tinnitus.
 							</p>
-							<p>
-								Deze scores geeft een indicatie van jouw klachten. Wil je graag precies weten hoeveel last
-								jij hebt en of we jou kunnen helpen om die last te verminderen? Plan dan een gratis gesprek
-								via onderstaande knop.
-							</p>
 						</div>
 						<div v-else-if="score < 60" class="pf-result-summary">
 							<p>
 								Dit betekent dat je <strong>ernstige klachten</strong> ervaart van jouw tinnitus.
 							</p>
-							<p>
-								Deze scores geeft een indicatie van jouw klachten. Wil je graag precies weten hoeveel last
-								jij hebt en of we jou kunnen helpen om die last te verminderen? Plan dan een gratis gesprek
-								via onderstaande knop.
-							</p>
 						</div>
 						<div v-else class="pf-result-summary">
 							<p>
 								Dit betekent dat je <strong>zeer ernstige klachten</strong> ervaart van jouw tinnitus.
-							</p>
-							<p>
-								Deze scores geeft een indicatie van jouw klachten. Wil je graag precies weten hoeveel last
-								jij hebt en of we jou kunnen helpen om die last te verminderen? Plan dan een gratis gesprek
-								via onderstaande knop.
 							</p>
 						</div>
 						<div>
