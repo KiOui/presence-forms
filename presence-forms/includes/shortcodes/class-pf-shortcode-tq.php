@@ -88,22 +88,56 @@ if ( ! class_exists( 'Pf_Shortcode_Tq' ) ) {
 							Beantwoord alle vragen om jouw score te zien.
 						</div>
 					</div>
-					<div v-if="score !== null" class="pf-result-summary">
-						<p>
-							Dit betekent dat je <strong>geen of zeer milde klachten</strong> ervaart van jouw tinnitus.
-							Wil je contact met ons opnemen of heb je vragen over de uitkomst? Aarzel dan niet om een
-							mail te sturen, te bellen of een Whatsapp te sturen.
-						</p>
-						<p>
-							Met de knop hier onder kun je gemakkelijk contact met ons opnemen. Jouw score wordt dan
-							meegestuurd met jouw bericht. Zo kunnen we je snel en gemakkelijk helpen.
-						</p>
-						<?php if ( ! is_null( PFSettings::instance()->get_settings()->get_value( 'thi_form_url' ) ) ) : ?>
-						<button @click="eraseAndRedirect(`<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'thi_form_url' ) ); ?>?<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'tq_form_score_parameter_name' ) ); ?>=${this.score}`)" class="pf-tq-form-button">
-							Neem contact op
-						</button>
-						<?php endif; ?>
-					</div>
+					<template v-if="score !== null">
+						<div v-if="score < 31" class="pf-result-summary">
+							<p>
+								Dit betekent dat je <strong>geen of zeer milde klachten</strong> ervaart van jouw tinnitus.
+							</p>
+							<p>
+								Deze scores geeft een indicatie van jouw klachten. Wil je graag precies weten hoeveel last
+								jij hebt en of we jou kunnen helpen om die last te verminderen? Plan dan een gratis gesprek
+								via onderstaande knop.
+							</p>
+						</div>
+						<div v-else-if="score < 47" class="pf-result-summary">
+							<p>
+								Dit betekent dat je <strong>milde of middelmatige klachten</strong> ervaart van jouw
+								tinnitus.
+							</p>
+							<p>
+								Deze scores geeft een indicatie van jouw klachten. Wil je graag precies weten hoeveel last
+								jij hebt en of we jou kunnen helpen om die last te verminderen? Plan dan een gratis gesprek
+								via onderstaande knop.
+							</p>
+						</div>
+						<div v-else-if="score < 60" class="pf-result-summary">
+							<p>
+								Dit betekent dat je <strong>ernstige klachten</strong> ervaart van jouw tinnitus.
+							</p>
+							<p>
+								Deze scores geeft een indicatie van jouw klachten. Wil je graag precies weten hoeveel last
+								jij hebt en of we jou kunnen helpen om die last te verminderen? Plan dan een gratis gesprek
+								via onderstaande knop.
+							</p>
+						</div>
+						<div v-else class="pf-result-summary">
+							<p>
+								Dit betekent dat je <strong>zeer ernstige klachten</strong> ervaart van jouw tinnitus.
+							</p>
+							<p>
+								Deze scores geeft een indicatie van jouw klachten. Wil je graag precies weten hoeveel last
+								jij hebt en of we jou kunnen helpen om die last te verminderen? Plan dan een gratis gesprek
+								via onderstaande knop.
+							</p>
+						</div>
+						<div>
+							<?php if ( ! is_null( PFSettings::instance()->get_settings()->get_value( 'thi_form_url' ) ) ) : ?>
+								<button @click="eraseAndRedirect(`<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'thi_form_url' ) ); ?>?<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'tq_form_score_parameter_name' ) ); ?>=${this.score}`)" class="pf-tq-form-button">
+									Klik om naar de volgende vragenlijst te gaan
+								</button>
+							<?php endif; ?>
+						</div>
+					</template>
 				</div>
 			<?php
 			$ob_content = ob_get_contents();

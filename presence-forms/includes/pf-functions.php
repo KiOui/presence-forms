@@ -12,7 +12,8 @@ if ( ! class_exists( 'pf_check_redirect' ) ) {
 	 * @return void
 	 */
 	function pf_check_redirect(): void {
-		if ( ! is_admin() ) {
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- We only check for inclusion.
+		if ( ! is_admin() && ( ! isset( $_SERVER['REQUEST_URI'] ) || ! str_contains( wp_unslash( $_SERVER['REQUEST_URI'] ), 'elementor' ) ) ) {
 			global $post;
 			$tq_form_score_parameter_name = PFSettings::instance()->get_settings()->get_value( 'tq_form_score_parameter_name' );
 			if ( has_shortcode( $post->post_content, 'pf_form_thi' ) && ! isset( $_GET[ $tq_form_score_parameter_name ] ) ) {

@@ -60,11 +60,14 @@
 	color: white;
 }
 
+.pf-result-summary {
+	margin-top: 20px;
+}
+
 .pf-tq-form-button {
 	flex-basis: 0;
 	flex-grow: 1;
 	padding: 12px 14px;
-	max-width: 30%;
 	background-color: white;
 	border: 1px solid black;
 	border-radius: 3px;
