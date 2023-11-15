@@ -99,9 +99,13 @@ if ( ! class_exists( 'Pf_Shortcode_Thi' ) ) {
 								Dit betekent dat je <strong>geen of zeer milde klachten</strong> ervaart van jouw tinnitus.
 							</p>
 							<p>
-								Deze scores geeft een indicatie van jouw klachten. Wil je graag precies weten hoeveel last
-								jij hebt en of we jou kunnen helpen om die last te verminderen? Plan dan een gratis gesprek
-								via onderstaande knop.
+								Deze scores geeft een indicatie van jouw klachten. Verstoort tinnitus jouw
+								concentratie, nachtrust of krijg je last van stress door het geluid?
+							</p>
+							<p>
+								Wij kunnen jou helpen om er anders mee om te gaan, zodat je er geen last meer van
+								hebt. Plan via onderstaande knop een gratis gesprek om te kijken wat we voor jouw
+								kunnen betekenen.
 							</p>
 						</div>
 						<div v-else-if="score < 37" class="pf-result-summary">
@@ -110,9 +114,13 @@ if ( ! class_exists( 'Pf_Shortcode_Thi' ) ) {
 								tinnitus.
 							</p>
 							<p>
-								Deze scores geeft een indicatie van jouw klachten. Wil je graag precies weten hoeveel last
-								jij hebt en of we jou kunnen helpen om die last te verminderen? Plan dan een gratis gesprek
-								via onderstaande knop.
+								Deze scores geeft een indicatie van jouw klachten. Verstoort tinnitus jouw
+								concentratie, nachtrust of krijg je last van stress door het geluid?
+							</p>
+							<p>
+								Wij kunnen jou helpen om er anders mee om te gaan, zodat je er geen last meer van
+								hebt. Plan via onderstaande knop een gratis gesprek om te kijken wat we voor jouw
+								kunnen betekenen.
 							</p>
 						</div>
 						<div v-else-if="score < 57" class="pf-result-summary">
@@ -120,9 +128,13 @@ if ( ! class_exists( 'Pf_Shortcode_Thi' ) ) {
 								Dit betekent dat je <strong>matige klachten</strong> ervaart van jouw tinnitus.
 							</p>
 							<p>
-								Deze scores geeft een indicatie van jouw klachten. Wil je graag precies weten hoeveel last
-								jij hebt en of we jou kunnen helpen om die last te verminderen? Plan dan een gratis gesprek
-								via onderstaande knop.
+								Deze scores geeft een indicatie van jouw klachten. Verstoort tinnitus jouw
+								concentratie, nachtrust of krijg je last van stress door het geluid?
+							</p>
+							<p>
+								Wij kunnen jou helpen om er anders mee om te gaan, zodat je er geen last meer van
+								hebt. Plan via onderstaande knop een gratis gesprek om te kijken wat we voor jouw
+								kunnen betekenen.
 							</p>
 						</div>
 						<div v-else-if="score < 77" class="pf-result-summary">
@@ -130,9 +142,13 @@ if ( ! class_exists( 'Pf_Shortcode_Thi' ) ) {
 								Dit betekent dat je <strong>ernstige klachten</strong> ervaart van jouw tinnitus.
 							</p>
 							<p>
-								Deze scores geeft een indicatie van jouw klachten. Wil je graag precies weten hoeveel last
-								jij hebt en of we jou kunnen helpen om die last te verminderen? Plan dan een gratis gesprek
-								via onderstaande knop.
+								Deze scores geeft een indicatie van jouw klachten. Verstoort tinnitus jouw
+								concentratie, nachtrust of krijg je last van stress door het geluid?
+							</p>
+							<p>
+								Wij kunnen jou helpen om er anders mee om te gaan, zodat je er geen last meer van
+								hebt. Plan via onderstaande knop een gratis gesprek om te kijken wat we voor jouw
+								kunnen betekenen.
 							</p>
 						</div>
 						<div v-else class="pf-result-summary">
@@ -140,9 +156,13 @@ if ( ! class_exists( 'Pf_Shortcode_Thi' ) ) {
 								Dit betekent dat je <strong>zeer ernstige klachten</strong> ervaart van jouw tinnitus.
 							</p>
 							<p>
-								Deze scores geeft een indicatie van jouw klachten. Wil je graag precies weten hoeveel last
-								jij hebt en of we jou kunnen helpen om die last te verminderen? Plan dan een gratis gesprek
-								via onderstaande knop.
+								Deze scores geeft een indicatie van jouw klachten. Verstoort tinnitus jouw
+								concentratie, nachtrust of krijg je last van stress door het geluid?
+							</p>
+							<p>
+								Wij kunnen jou helpen om er anders mee om te gaan, zodat je er geen last meer van
+								hebt. Plan via onderstaande knop een gratis gesprek om te kijken wat we voor jouw
+								kunnen betekenen.
 							</p>
 						</div>
 						<div>

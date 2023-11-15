@@ -9,7 +9,7 @@ createApp(
 				tq_form_value: TQ_FORM_VALUE,
 				questions: [
 					{
-						"question": "Kunt u zich moeilijk concentreren vanwege uw tinnitus?",
+						"question": "Kun je je moeilijk concentreren vanwege jouw tinnitus?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -17,7 +17,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Verstaat u andere mensen moeilijk vanwege de luidheid van uw tinnitus?",
+						"question": "Versta je andere mensen moeilijk vanwege de luidheid van jouw tinnitus?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -25,7 +25,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Maakt tinnitus u boos?",
+						"question": "Maakt tinnitus jou boos?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -33,7 +33,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Voelt u zich verward vanwege uw tinnitus?",
+						"question": "Voel je je verward vanwege jouw tinnitus?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -41,7 +41,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Voelt u zich wanhopig vanwege uw tinnitus?",
+						"question": "Voel je je wanhopig vanwege jouw tinnitus?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -49,7 +49,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Klaagt u veel over uw tinnitus?",
+						"question": "Klaag je veel over jouw tinnitus?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -57,7 +57,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Heeft u 's avonds moeite met in slaap vallen vanwege uw tinnitus?",
+						"question": "Heb je 's avonds moeite met in slaap vallen vanwege jouw tinnitus?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -65,7 +65,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Heeft u het gevoel niet aan uw tinnitus te kunnen ontsnappen?",
+						"question": "Heb je het gevoel niet aan jouw tinnitus te kunnen ontsnappen?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -73,7 +73,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Bemoeilijkt uw tinnitus een plezier sociaal leven? (bijv. uit eten gaan, concert of film bezoeken)",
+						"question": "Bemoeilijkt tinnitus jouw plezier en sociale leven? (bijv. uit eten gaan, concert of film bezoeken)",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -81,7 +81,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Voelt u zich gefrustreerd vanwege uw tinnitus?",
+						"question": "Voel je je gefrustreerd vanwege jouw tinnitus?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -89,7 +89,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Denkt u, vanwege uw tinnitus dat u aan een ernstige ziekte lijdt?",
+						"question": "Denk je, vanwege jouw tinnitus dat je aan een ernstige ziekte lijdt?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -97,7 +97,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Kunt u vanwege uw tinnitus moeilijk van het leven genieten?",
+						"question": "Kun je vanwege jouw tinnitus moeilijk van het leven genieten?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -105,7 +105,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Bemoeilijkt uw tinnitus verantwoordelijkheden thuis of op uw werk?",
+						"question": "Bemoeilijkt jouw tinnitus verantwoordelijkheden thuis of op je werk?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -113,7 +113,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Bent u vaak geïrriteerd vanwege uw tinnitus?",
+						"question": "Ben je vaak geïrriteerd vanwege jouw tinnitus?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -121,7 +121,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Is het voor u moelijk om te lezen, vanwege uw tinnitus?",
+						"question": "Is het voor jou moelijk om te lezen, vanwege jouw tinnitus?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -129,7 +129,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Raakt u van slag door uw tinnitus?",
+						"question": "Raak je van slag door jouw tinnitus?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -137,7 +137,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Heeft de tinnitus spanningen veroorzaakt tussen u en uw familieleden en vrienden?",
+						"question": "Heeft de tinnitus spanningen veroorzaakt tussen jou en jouw familieleden en vrienden?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -145,7 +145,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Is het moeilijk voor u om uw aandacht van de tinnitus naar iets anders te verplaatsen?",
+						"question": "Is het moeilijk voor je om jouw aandacht van de tinnitus naar iets anders te verplaatsen?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -153,7 +153,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Heeft u het gevoel geen controle te hebben over uw tinnitus?",
+						"question": "Heb je het gevoel geen controle te hebben over jouw tinnitus?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -161,7 +161,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Bent u vaak moe vanwege uw tinnitus?",
+						"question": "Ben je vaak moe vanwege jouw tinnitus?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -169,7 +169,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Bent u neerslachtig vanwege uw tinnitus?",
+						"question": "Ben je neerslachtig vanwege jouw tinnitus?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -177,7 +177,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Maakt uw tinnitus u angstig?",
+						"question": "Maakt tinnitus jou angstig?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -185,7 +185,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Heeft u het gevoel niet meer met uw tinnitus te kunnen omgaan?",
+						"question": "Heb je het gevoel niet meer met jouw tinnitus om te kunnen gaan?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -193,7 +193,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Wordt uw tinnitus erger wanneer u stress of spanningen ervaart?",
+						"question": "Wordt jouw tinnitus erger wanneer je stress of spanningen ervaart?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
@@ -201,7 +201,7 @@ createApp(
 						}
 					},
 					{
-						"question": "Voelt u zich onzeker vanwege uw tinnitus?",
+						"question": "Voel je je onzeker vanwege jouw tinnitus?",
 						"answers": {
 							"Ja": 4,
 							"Soms": 2,
