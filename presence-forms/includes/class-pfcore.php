@@ -270,6 +270,7 @@ if ( ! class_exists( 'PfCore' ) ) {
 		public function add_shortcodes(): void {
 			add_shortcode( 'pf_form_tq', array( $this, 'do_shortcode_tq_form' ) );
 			add_shortcode( 'pf_form_thi', array( $this, 'do_shortcode_thi_form' ) );
+			add_shortcode( 'pf_form_tfi', array( $this, 'do_shortcode_tfi_form' ) );
 		}
 
 		/**
@@ -301,6 +302,22 @@ if ( ! class_exists( 'PfCore' ) ) {
 
 			include_once PF_ABSPATH . 'includes/shortcodes/class-pf-shortcode-thi.php';
 			$shortcode = new Pf_Shortcode_Thi( $atts );
+			return $shortcode->do_shortcode();
+		}
+
+		/**
+		 * Do the shortcode of a TFI form.
+		 *
+		 * @param $atts
+		 * @return false|string
+		 */
+		public function do_shortcode_tfi_form( $atts ): bool|string {
+			if ( gettype( $atts ) != 'array' ) {
+				$atts = array();
+			}
+
+			include_once PF_ABSPATH . 'includes/shortcodes/class-pf-shortcode-tfi.php';
+			$shortcode = new Pf_Shortcode_Tfi( $atts );
 			return $shortcode->do_shortcode();
 		}
 	}

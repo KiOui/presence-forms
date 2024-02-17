@@ -25,6 +25,34 @@ if ( ! class_exists( 'Pf_Shortcode_Thi' ) ) {
 		private string $id;
 
 		/**
+		 * Optional URL to redirect the user to if the $tq_parameter_name does not have a value.
+		 *
+		 * @var string|null
+		 */
+		private ?string $tq_form_url;
+
+		/**
+		 * Optional URL to the contact form that the user should be redirected to after this form.
+		 *
+		 * @var string|null
+		 */
+		private ?string $contact_form_url;
+
+		/**
+		 * The name of the GET parameter that must be set when redirecting the user.
+		 *
+		 * @var string
+		 */
+		private string $thi_parameter_name;
+
+		/**
+		 * The name of the GET parameter that will be set when the user was redirected from the TQ form to the THI form.
+		 *
+		 * @var string
+		 */
+		private string $tq_parameter_name;
+
+		/**
 		 * Pf_Shortcode_Thi constructor.
 		 *
 		 * @param array $atts {
@@ -39,6 +67,31 @@ if ( ! class_exists( 'Pf_Shortcode_Thi' ) ) {
 			} else {
 				$this->id = uniqid();
 			}
+
+			if ( key_exists( 'tq_parameter_name', $atts ) && gettype( $atts['tq_parameter_name'] ) == 'string' ) {
+				$this->tq_parameter_name = strval( $atts['tq_parameter_name'] );
+			} else {
+				$this->tq_parameter_name = 'tq-score';
+			}
+
+			if ( key_exists( 'tq_form_url', $atts ) && gettype( $atts['tq_form_url'] ) == 'string' ) {
+				$this->tq_form_url = strval( $atts['tq_form_url'] );
+			} else {
+				$this->tq_form_url = null;
+			}
+
+			if ( key_exists( 'contact_form_url', $atts ) && gettype( $atts['contact_form_url'] ) == 'string' ) {
+				$this->contact_form_url = strval( $atts['contact_form_url'] );
+			} else {
+				$this->contact_form_url = null;
+			}
+
+			if ( key_exists( 'thi_parameter_name', $atts ) && gettype( $atts['thi_parameter_name'] ) == 'string' ) {
+				$this->thi_parameter_name = strval( $atts['thi_parameter_name'] );
+			} else {
+				$this->thi_parameter_name = 'thi-score';
+			}
+
 			$this->include_styles_and_scripts();
 		}
 
@@ -68,7 +121,7 @@ if ( ! class_exists( 'Pf_Shortcode_Thi' ) ) {
 		 * @return false|string
 		 */
 		public function do_shortcode(): bool|string {
-			$tq_form_score_parameter_name = PFSettings::instance()->get_settings()->get_value( 'tq_form_score_parameter_name' );
+			$tq_form_score_parameter_name = $this->tq_parameter_name;
 			$tq_form_value = isset( $_GET[ $tq_form_score_parameter_name ] ) ? intval( $_GET[ $tq_form_score_parameter_name ] ) : 0;
 			ob_start(); ?>
 				<script>
@@ -166,8 +219,8 @@ if ( ! class_exists( 'Pf_Shortcode_Thi' ) ) {
 							</p>
 						</div>
 						<div>
-							<?php if ( ! is_null( PFSettings::instance()->get_settings()->get_value( 'contact_form_url' ) ) ) : ?>
-							<button @click="eraseAndRedirect(`<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'contact_form_url' ) ); ?>?<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'thi_form_score_parameter_name' ) ); ?>=${this.score}&<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'tq_form_score_parameter_name' ) ); ?>=${this.tq_form_value}`)" class="pf-thi-form-button">
+							<?php if ( ! is_null( $this->contact_form_url ) ) : ?>
+							<button @click="eraseAndRedirect(`<?php echo esc_attr( $this->contact_form_url ); ?>?<?php echo esc_attr( $this->thi_parameter_name ); ?>=${this.score}&<?php echo esc_attr( $this->tq_parameter_name ); ?>=${this.tq_form_value}`)" class="pf-thi-form-button">
 								Neem contact op
 							</button>
 							<?php endif; ?>

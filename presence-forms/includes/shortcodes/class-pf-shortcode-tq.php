@@ -25,6 +25,20 @@ if ( ! class_exists( 'Pf_Shortcode_Tq' ) ) {
 		private string $id;
 
 		/**
+         * The URL to the THI form.
+         *
+		 * @var string|null
+		 */
+		private ?string $thi_form_url;
+
+		/**
+         * The name of the GET parameter that must be set when redirecting the user to the THI form.
+         *
+		 * @var string
+		 */
+		private string $tq_parameter_name;
+
+		/**
 		 * Pf_Shortcode_Tq constructor.
 		 *
 		 * @param array $atts {
@@ -39,6 +53,19 @@ if ( ! class_exists( 'Pf_Shortcode_Tq' ) ) {
 			} else {
 				$this->id = uniqid();
 			}
+
+			if ( key_exists( 'tq_parameter_name', $atts ) && gettype( $atts['tq_parameter_name'] ) == 'string' ) {
+				$this->tq_parameter_name = strval( $atts['tq_parameter_name'] );
+			} else {
+				$this->tq_parameter_name = 'tq-score';
+			}
+
+			if ( key_exists( 'thi_form_url', $atts ) && gettype( $atts['thi_form_url'] ) == 'string' ) {
+				$this->thi_form_url = strval( $atts['thi_form_url'] );
+			} else {
+				$this->thi_form_url = null;
+			}
+
 			$this->include_styles_and_scripts();
 		}
 
@@ -123,8 +150,8 @@ if ( ! class_exists( 'Pf_Shortcode_Tq' ) ) {
 							</p>
 						</div>
 						<div>
-							<?php if ( ! is_null( PFSettings::instance()->get_settings()->get_value( 'thi_form_url' ) ) ) : ?>
-								<button @click="eraseAndRedirect(`<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'thi_form_url' ) ); ?>?<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'tq_form_score_parameter_name' ) ); ?>=${this.score}`)" class="pf-tq-form-button">
+							<?php if ( ! is_null( $this->thi_form_url ) ) : ?>
+								<button @click="eraseAndRedirect(`<?php echo esc_attr( $this->thi_form_url ); ?>?<?php echo esc_attr( $this->tq_parameter_name ); ?>=${this.score}`)" class="pf-tq-form-button">
 									Klik om naar de volgende vragenlijst te gaan
 								</button>
 							<?php endif; ?>
