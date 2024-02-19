@@ -23,7 +23,7 @@ if ( ! class_exists( 'PfCore' ) ) {
 		 *
 		 * @var string
 		 */
-		public string $version = '1.0.0';
+		public string $version = '2.0.0';
 
 		/**
 		 * The single instance of the class
