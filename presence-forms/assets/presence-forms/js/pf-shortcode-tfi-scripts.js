@@ -555,7 +555,7 @@ createApp(
 				let answers = this.questions.map((question) => {
 					return question.selected;
 				});
-				setListCookie(COOKIE_NAME_THI_FORM, answers, 7);
+				setListCookie(COOKIE_NAME_TFI_FORM, answers, 7);
 			},
 			eraseAndRedirect(location) {
 				window.location.href = location;

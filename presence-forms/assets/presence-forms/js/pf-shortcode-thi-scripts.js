@@ -7,6 +7,7 @@ createApp(
 		data() {
 			return {
 				tq_form_value: TQ_FORM_VALUE,
+				tfi_form_value: TFI_FORM_VALUE,
 				questions: [
 					{
 						"question": "Kun je je moeilijk concentreren vanwege jouw tinnitus?",

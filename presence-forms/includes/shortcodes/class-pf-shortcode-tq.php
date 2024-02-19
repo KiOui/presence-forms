@@ -25,18 +25,25 @@ if ( ! class_exists( 'Pf_Shortcode_Tq' ) ) {
 		private string $id;
 
 		/**
-         * The URL to the THI form.
-         *
+		 * The URL to the THI form.
+		 *
 		 * @var string|null
 		 */
 		private ?string $thi_form_url;
 
 		/**
-         * The name of the GET parameter that must be set when redirecting the user to the THI form.
-         *
-		 * @var string
+		 * The text to be shown on the button once the form is filled in.
+		 *
+		 * @var string|null
 		 */
-		private string $tq_parameter_name;
+		private ?string $button_text;
+
+		/**
+		 * The text to be shown under the score once the form is filled in.
+		 *
+		 * @var string|null
+		 */
+		private ?string $text;
 
 		/**
 		 * Pf_Shortcode_Tq constructor.
@@ -54,16 +61,22 @@ if ( ! class_exists( 'Pf_Shortcode_Tq' ) ) {
 				$this->id = uniqid();
 			}
 
-			if ( key_exists( 'tq_parameter_name', $atts ) && gettype( $atts['tq_parameter_name'] ) == 'string' ) {
-				$this->tq_parameter_name = strval( $atts['tq_parameter_name'] );
-			} else {
-				$this->tq_parameter_name = 'tq-score';
-			}
-
 			if ( key_exists( 'thi_form_url', $atts ) && gettype( $atts['thi_form_url'] ) == 'string' ) {
 				$this->thi_form_url = strval( $atts['thi_form_url'] );
 			} else {
 				$this->thi_form_url = null;
+			}
+
+			if ( key_exists( 'button_text', $atts ) && gettype( $atts['button_text'] ) == 'string' ) {
+				$this->button_text = strval( $atts['button_text'] );
+			} else {
+				$this->button_text = null;
+			}
+
+			if ( key_exists( 'text', $atts ) && gettype( $atts['text'] ) == 'string' ) {
+				$this->text = strval( $atts['text'] );
+			} else {
+				$this->text = null;
 			}
 
 			$this->include_styles_and_scripts();
@@ -95,7 +108,12 @@ if ( ! class_exists( 'Pf_Shortcode_Tq' ) ) {
 		 * @return false|string
 		 */
 		public function do_shortcode(): bool|string {
+			$tfi_form_score_parameter_name = PFSettings::instance()->get_settings()->get_value( 'tfi_form_score_parameter_name' );
+			$tfi_form_value = isset( $_GET[ $tfi_form_score_parameter_name ] ) ? intval( $_GET[ $tfi_form_score_parameter_name ] ) : 0;
 			ob_start(); ?>
+				<script>
+					const TFI_FORM_VALUE = <?php echo esc_attr( $tfi_form_value ); ?>;
+				</script>
 				<div id="pf-shortcode-tq-container-<?php echo esc_attr( $this->id ); ?>" class="pf-container pf-shortcode-tq-container">
 					<div v-for="question in questions" class="pf-question">
 						<p><i v-if="question['selected'] !== 'default'" class="fa-solid fa-check pf-green"></i><i v-else class="fa-solid fa-times pf-red" style="margin-right: 2px;"></i> {{ question.question }}</p>
@@ -120,39 +138,47 @@ if ( ! class_exists( 'Pf_Shortcode_Tq' ) ) {
 							<p>
 								Dit betekent dat je <strong>geen of zeer milde klachten</strong> ervaart van jouw tinnitus.
 							</p>
-							<p>
-								Klik op onderstaande knop om de tweede vragenlijst in te vullen.
-							</p>
+							<?php if ( ! is_null( $this->text ) ) : ?>
+								<p>
+									<?php echo esc_html( $this->text ); ?>
+								</p>
+							<?php endif; ?>
 						</div>
 						<div v-else-if="score < 47" class="pf-result-summary">
 							<p>
 								Dit betekent dat je <strong>milde of middelmatige klachten</strong> ervaart van jouw
 								tinnitus.
 							</p>
-							<p>
-								Klik op onderstaande knop om de tweede vragenlijst in te vullen.
-							</p>
+							<?php if ( ! is_null( $this->text ) ) : ?>
+								<p>
+									<?php echo esc_html( $this->text ); ?>
+								</p>
+							<?php endif; ?>
 						</div>
 						<div v-else-if="score < 60" class="pf-result-summary">
 							<p>
 								Dit betekent dat je <strong>ernstige klachten</strong> ervaart van jouw tinnitus.
 							</p>
-							<p>
-								Klik op onderstaande knop om de tweede vragenlijst in te vullen.
-							</p>
+							<?php if ( ! is_null( $this->text ) ) : ?>
+								<p>
+									<?php echo esc_html( $this->text ); ?>
+								</p>
+							<?php endif; ?>
 						</div>
 						<div v-else class="pf-result-summary">
 							<p>
 								Dit betekent dat je <strong>zeer ernstige klachten</strong> ervaart van jouw tinnitus.
 							</p>
-							<p>
-								Klik op onderstaande knop om de tweede vragenlijst in te vullen.
-							</p>
+							<?php if ( ! is_null( $this->text ) ) : ?>
+								<p>
+									<?php echo esc_html( $this->text ); ?>
+								</p>
+							<?php endif; ?>
 						</div>
 						<div>
-							<?php if ( ! is_null( $this->thi_form_url ) ) : ?>
-								<button @click="eraseAndRedirect(`<?php echo esc_attr( $this->thi_form_url ); ?>?<?php echo esc_attr( $this->tq_parameter_name ); ?>=${this.score}`)" class="pf-tq-form-button">
-									Klik om naar de volgende vragenlijst te gaan
+							<?php if ( ! is_null( $this->thi_form_url ) && ! is_null( $this->button_text ) ) : ?>
+								<button @click="eraseAndRedirect(`<?php echo esc_attr( $this->thi_form_url ); ?>?<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'tq_form_score_parameter_name' ) ); ?>=${this.score}&<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'tfi_form_score_parameter_name' ) ); ?>=${this.tfi_form_value}`)" class="pf-tq-form-button">
+									<?php echo esc_html( $this->button_text ); ?>
 								</button>
 							<?php endif; ?>
 						</div>
