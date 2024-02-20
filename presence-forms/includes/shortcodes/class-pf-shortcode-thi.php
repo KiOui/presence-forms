@@ -25,13 +25,6 @@ if ( ! class_exists( 'Pf_Shortcode_Thi' ) ) {
 		private string $id;
 
 		/**
-		 * Optional URL to redirect the user to if the $tq_parameter_name does not have a value.
-		 *
-		 * @var string|null
-		 */
-		private ?string $tq_form_url;
-
-		/**
 		 * Optional URL to the contact form that the user should be redirected to after this form.
 		 *
 		 * @var string|null
@@ -66,12 +59,6 @@ if ( ! class_exists( 'Pf_Shortcode_Thi' ) ) {
 				$this->id = $atts['id'];
 			} else {
 				$this->id = uniqid();
-			}
-
-			if ( key_exists( 'tq_form_url', $atts ) && gettype( $atts['tq_form_url'] ) == 'string' ) {
-				$this->tq_form_url = strval( $atts['tq_form_url'] );
-			} else {
-				$this->tq_form_url = null;
 			}
 
 			if ( key_exists( 'contact_form_url', $atts ) && gettype( $atts['contact_form_url'] ) == 'string' ) {

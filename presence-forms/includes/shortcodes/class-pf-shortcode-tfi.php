@@ -112,7 +112,13 @@ if ( ! class_exists( 'Pf_Shortcode_Tfi' ) ) {
 			<div id="pf-shortcode-tfi-container-<?php echo esc_attr( $this->id ); ?>" class="pf-container pf-shortcode-tfi-container">
 				<div v-for="question in questions" class="pf-question">
 					<p><i v-if="question['selected'] !== 'default'" class="fa-solid fa-check pf-green"></i><i v-else class="fa-solid fa-times pf-red" style="margin-right: 2px;"></i> {{ question.question }}</p>
-					<div class="pf-question-answers">
+					<div v-if="question['type'] === 'range'" class="pf-question-answers pf-question-answers-range">
+						<span><template v-if="question['selected'] !== 'default'">{{ question.selected }}<template v-if="question['value_postfix']">{{ question.value_postfix }}</template></template><template v-else>Verschuif het schuifje hieronder om jouw score aan te geven</template></span>
+						<div class="slider">
+							<input v-model="question['selected']" style="width: 100%" type="range" :min="question['min']" :max="question['max']" :step="question['step']"/>
+						</div>
+					</div>
+					<div v-else class="pf-question-answers pf-question-answers-select">
 						<select v-model="question['selected']" style="display: none;">
 							<option disabled value="default" selected>Selecteer een antwoord</option>
 							<option v-for="[answer, points] of Object.entries(question.answers)" :value="points">{{ answer }}</option>
