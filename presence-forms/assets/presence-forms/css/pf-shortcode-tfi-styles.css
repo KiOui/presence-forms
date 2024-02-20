@@ -58,11 +58,13 @@
 }
 
 .pf-question-notes-left {
-
+	max-width: 45%;
 }
 
 .pf-question-notes-right {
 	margin-left: auto;
+	text-align: right;
+	max-width: 45%;
 }
 
 .pf-tfi-form-score {
