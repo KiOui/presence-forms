@@ -65,7 +65,7 @@ createApp(
 						"left": "Heel gemakkelijk om mee om te gaan", "right": "Onmogelijk om mee om te gaan",
 					}
 				}, {
-					"question": "Hoe gemakkelijk was het voor u om met uw tinnitus te NEGEREN in de afgelopen week?",
+					"question": "Hoe gemakkelijk was het voor u om uw tinnitus te NEGEREN in de afgelopen week?",
 					"type": "range",
 					"min": 0,
 					"max": 10,
@@ -315,7 +315,7 @@ createApp(
 			}
 		}, computed: {
 			score: function () {
-				return this.questions.map(
+				let result = this.questions.map(
 					(question) => {
 						if (question.mapping !== undefined) {
 							return question.mapping[question.selected];
@@ -335,6 +335,11 @@ createApp(
 					},
 					0
 				);
+				if (result === null) {
+					return null;
+				} else {
+					return result / 2.5;
+				}
 			}
 		}
 	}
