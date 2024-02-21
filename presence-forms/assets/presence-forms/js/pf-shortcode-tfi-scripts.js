@@ -338,7 +338,7 @@ createApp(
 				if (result === null) {
 					return null;
 				} else {
-					Math.round(return result / 2.5);
+					return Math.round(result / 2.5);
 				}
 			}
 		}
