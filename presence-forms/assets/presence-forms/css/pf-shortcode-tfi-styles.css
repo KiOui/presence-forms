@@ -1,0 +1,127 @@
+.pf-shortcode-tfi-container .pf-question .pf-question-answers-select {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.pf-shortcode-tfi-container .pf-question .pf-question-answers-select button {
+	flex-basis: 0;
+	flex-grow: 1;
+	padding: 12px 14px;
+	max-width: 30%;
+	background-color: white;
+	border: 1px solid black;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: all 300ms;
+}
+
+.pf-shortcode-tfi-container .pf-question .pf-question-answers-select button:hover {
+	opacity: 0.7;
+}
+
+.pf-shortcode-tfi-container .pf-question .pf-question-answers-select button.pf-selected {
+	background-color: black;
+	color: white;
+}
+
+.pf-shortcode-tfi-container .pf-question .pf-question-answers-range {
+	display: flex;
+	flex-direction: column;
+}
+
+.pf-shortcode-tfi-container .pf-question .pf-question-answers-range span {
+	width: 100%;
+	text-align: center;
+}
+
+.pf-green {
+	color: green;
+}
+
+.pf-red {
+	color: red;
+}
+
+.pf-question {
+	margin-bottom: 30px;
+}
+
+.pf-question p {
+	margin-top: 0;
+	margin-bottom: 5px;
+}
+
+.pf-question-notes {
+	display: flex;
+	flex-direction: row;
+}
+
+.pf-question-notes-left {
+	max-width: 45%;
+}
+
+.pf-question-notes-right {
+	margin-left: auto;
+	text-align: right;
+	max-width: 45%;
+}
+
+.pf-tfi-form-score {
+	padding: 14px 20px;
+	text-align: center;
+	background-color: green;
+	border: 1px solid green;
+	border-radius: 3px;
+	color: white;
+}
+
+.pf-tfi-form-not-filled-in {
+	padding: 14px 20px;
+	text-align: center;
+	background-color: red;
+	border: 1px solid red;
+	border-radius: 3px;
+	color: white;
+}
+
+.pf-result-summary {
+	margin-top: 20px;
+}
+
+.pf-tfi-form-button {
+	flex-basis: 0;
+	flex-grow: 1;
+	padding: 12px 14px;
+	background-color: white;
+	border: 1px solid black;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: all 300ms;
+}
+
+.pf-tfi-form-button:hover {
+	opacity: 0.7;
+}
+
+.pf-reset-container {
+	display: flex;
+	justify-content: end;
+	flex-direction: row;
+	margin: 10px 0;
+}
+
+button.pf-reset-form {
+	background-color: unset;
+	color: var(--e-global-color-text);
+	border: unset;
+	text-decoration: underline;
+	padding: 0;
+}
+
+button.pf-reset-form:hover {
+	background-color: unset;
+	color: var(--e-global-color-text);
+	border: unset;
+	opacity: 0.9;
+}

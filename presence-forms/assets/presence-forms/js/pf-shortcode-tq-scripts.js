@@ -6,6 +6,7 @@ createApp(
 	{
 		data() {
 			return {
+				tfi_form_value: TFI_FORM_VALUE,
 				questions: [
 				{
 					"question": "Soms kan ik het oorsuizen negeren, ook als het er is.",

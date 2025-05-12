@@ -25,6 +25,27 @@ if ( ! class_exists( 'Pf_Shortcode_Thi' ) ) {
 		private string $id;
 
 		/**
+		 * Optional URL to the contact form that the user should be redirected to after this form.
+		 *
+		 * @var string|null
+		 */
+		private ?string $contact_form_url;
+
+		/**
+		 * The text to be shown on the button once the form is filled in.
+		 *
+		 * @var string|null
+		 */
+		private ?string $button_text;
+
+		/**
+		 * The text to be shown under the score once the form is filled in.
+		 *
+		 * @var string|null
+		 */
+		private ?string $text;
+
+		/**
 		 * Pf_Shortcode_Thi constructor.
 		 *
 		 * @param array $atts {
@@ -39,6 +60,25 @@ if ( ! class_exists( 'Pf_Shortcode_Thi' ) ) {
 			} else {
 				$this->id = uniqid();
 			}
+
+			if ( key_exists( 'contact_form_url', $atts ) && gettype( $atts['contact_form_url'] ) == 'string' ) {
+				$this->contact_form_url = strval( $atts['contact_form_url'] );
+			} else {
+				$this->contact_form_url = null;
+			}
+
+			if ( key_exists( 'button_text', $atts ) && gettype( $atts['button_text'] ) == 'string' ) {
+				$this->button_text = strval( $atts['button_text'] );
+			} else {
+				$this->button_text = null;
+			}
+
+			if ( key_exists( 'text', $atts ) && gettype( $atts['text'] ) == 'string' ) {
+				$this->text = strval( $atts['text'] );
+			} else {
+				$this->text = null;
+			}
+
 			$this->include_styles_and_scripts();
 		}
 
@@ -70,9 +110,13 @@ if ( ! class_exists( 'Pf_Shortcode_Thi' ) ) {
 		public function do_shortcode(): bool|string {
 			$tq_form_score_parameter_name = PFSettings::instance()->get_settings()->get_value( 'tq_form_score_parameter_name' );
 			$tq_form_value = isset( $_GET[ $tq_form_score_parameter_name ] ) ? intval( $_GET[ $tq_form_score_parameter_name ] ) : 0;
+
+			$tfi_form_score_parameter_name = PFSettings::instance()->get_settings()->get_value( 'tfi_form_score_parameter_name' );
+			$tfi_form_value = isset( $_GET[ $tfi_form_score_parameter_name ] ) ? intval( $_GET[ $tfi_form_score_parameter_name ] ) : 0;
 			ob_start(); ?>
 				<script>
 					const TQ_FORM_VALUE = <?php echo esc_attr( $tq_form_value ); ?>;
+					const TFI_FORM_VALUE = <?php echo esc_attr( $tfi_form_value ); ?>;
 				</script>
 				<div id="pf-shortcode-thi-container-<?php echo esc_attr( $this->id ); ?>" class="pf-container pf-shortcode-thi-container">
 					<div v-for="question in questions" class="pf-question">
@@ -98,78 +142,58 @@ if ( ! class_exists( 'Pf_Shortcode_Thi' ) ) {
 							<p>
 								Dit betekent dat je <strong>geen of zeer milde klachten</strong> ervaart van jouw tinnitus.
 							</p>
-							<p>
-								Deze scores geeft een indicatie van jouw klachten. Verstoort tinnitus jouw
-								concentratie, nachtrust of krijg je last van stress door het geluid?
-							</p>
-							<p>
-								Wij kunnen jou helpen om er anders mee om te gaan, zodat je er geen last meer van
-								hebt. Plan via onderstaande knop een gratis gesprek om te kijken wat we voor jouw
-								kunnen betekenen.
-							</p>
+							<?php if ( ! is_null( $this->text ) ) : ?>
+								<p>
+									<?php echo esc_html( $this->text ); ?>
+								</p>
+							<?php endif; ?>
 						</div>
 						<div v-else-if="score < 37" class="pf-result-summary">
 							<p>
 								Dit betekent dat je <strong>milde of middelmatige klachten</strong> ervaart van jouw
 								tinnitus.
 							</p>
-							<p>
-								Deze scores geeft een indicatie van jouw klachten. Verstoort tinnitus jouw
-								concentratie, nachtrust of krijg je last van stress door het geluid?
-							</p>
-							<p>
-								Wij kunnen jou helpen om er anders mee om te gaan, zodat je er geen last meer van
-								hebt. Plan via onderstaande knop een gratis gesprek om te kijken wat we voor jouw
-								kunnen betekenen.
-							</p>
+							<?php if ( ! is_null( $this->text ) ) : ?>
+								<p>
+									<?php echo esc_html( $this->text ); ?>
+								</p>
+							<?php endif; ?>
 						</div>
 						<div v-else-if="score < 57" class="pf-result-summary">
 							<p>
 								Dit betekent dat je <strong>matige klachten</strong> ervaart van jouw tinnitus.
 							</p>
-							<p>
-								Deze scores geeft een indicatie van jouw klachten. Verstoort tinnitus jouw
-								concentratie, nachtrust of krijg je last van stress door het geluid?
-							</p>
-							<p>
-								Wij kunnen jou helpen om er anders mee om te gaan, zodat je er geen last meer van
-								hebt. Plan via onderstaande knop een gratis gesprek om te kijken wat we voor jouw
-								kunnen betekenen.
-							</p>
+							<?php if ( ! is_null( $this->text ) ) : ?>
+								<p>
+									<?php echo esc_html( $this->text ); ?>
+								</p>
+							<?php endif; ?>
 						</div>
 						<div v-else-if="score < 77" class="pf-result-summary">
 							<p>
 								Dit betekent dat je <strong>ernstige klachten</strong> ervaart van jouw tinnitus.
 							</p>
-							<p>
-								Deze scores geeft een indicatie van jouw klachten. Verstoort tinnitus jouw
-								concentratie, nachtrust of krijg je last van stress door het geluid?
-							</p>
-							<p>
-								Wij kunnen jou helpen om er anders mee om te gaan, zodat je er geen last meer van
-								hebt. Plan via onderstaande knop een gratis gesprek om te kijken wat we voor jouw
-								kunnen betekenen.
-							</p>
+							<?php if ( ! is_null( $this->text ) ) : ?>
+								<p>
+									<?php echo esc_html( $this->text ); ?>
+								</p>
+							<?php endif; ?>
 						</div>
 						<div v-else class="pf-result-summary">
 							<p>
 								Dit betekent dat je <strong>zeer ernstige klachten</strong> ervaart van jouw tinnitus.
 							</p>
-							<p>
-								Deze scores geeft een indicatie van jouw klachten. Verstoort tinnitus jouw
-								concentratie, nachtrust of krijg je last van stress door het geluid?
-							</p>
-							<p>
-								Wij kunnen jou helpen om er anders mee om te gaan, zodat je er geen last meer van
-								hebt. Plan via onderstaande knop een gratis gesprek om te kijken wat we voor jouw
-								kunnen betekenen.
-							</p>
+							<?php if ( ! is_null( $this->text ) ) : ?>
+								<p>
+									<?php echo esc_html( $this->text ); ?>
+								</p>
+							<?php endif; ?>
 						</div>
 						<div>
-							<?php if ( ! is_null( PFSettings::instance()->get_settings()->get_value( 'contact_form_url' ) ) ) : ?>
-							<button @click="eraseAndRedirect(`<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'contact_form_url' ) ); ?>?<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'thi_form_score_parameter_name' ) ); ?>=${this.score}&<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'tq_form_score_parameter_name' ) ); ?>=${this.tq_form_value}`)" class="pf-thi-form-button">
-								Neem contact op
-							</button>
+							<?php if ( ! is_null( $this->contact_form_url ) && ! is_null( $this->button_text ) ) : ?>
+								<button @click="eraseAndRedirect(`<?php echo esc_attr( $this->contact_form_url ); ?>?<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'thi_form_score_parameter_name' ) ); ?>=${this.score}&<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'tfi_form_score_parameter_name' ) ); ?>=${this.tfi_form_value}&<?php echo esc_attr( PFSettings::instance()->get_settings()->get_value( 'tq_form_score_parameter_name' ) ); ?>=${this.tq_form_value}`)" class="pf-thi-form-button">
+									<?php echo esc_html( $this->button_text ); ?>
+								</button>
 							<?php endif; ?>
 						</div>
 					</template>

@@ -23,7 +23,7 @@ if ( ! class_exists( 'PfCore' ) ) {
 		 *
 		 * @var string
 		 */
-		public string $version = '1.0.0';
+		public string $version = '2.0.0';
 
 		/**
 		 * The single instance of the class
@@ -258,10 +258,6 @@ if ( ! class_exists( 'PfCore' ) ) {
 
 			add_action( 'after_setup_theme', array( $this, 'pluggable' ) );
 			add_action( 'init', array( $this, 'init' ) );
-
-			if ( ! is_admin() ) {
-				add_action( 'template_redirect', 'pf_check_redirect' );
-			}
 		}
 
 		/**
@@ -270,15 +266,16 @@ if ( ! class_exists( 'PfCore' ) ) {
 		public function add_shortcodes(): void {
 			add_shortcode( 'pf_form_tq', array( $this, 'do_shortcode_tq_form' ) );
 			add_shortcode( 'pf_form_thi', array( $this, 'do_shortcode_thi_form' ) );
+			add_shortcode( 'pf_form_tfi', array( $this, 'do_shortcode_tfi_form' ) );
 		}
 
 		/**
 		 * Do the shortcode of a TQ form.
 		 *
-		 * @param $atts
+		 * @param mixed $atts attributes.
 		 * @return false|string
 		 */
-		public function do_shortcode_tq_form( $atts ): bool|string {
+		public function do_shortcode_tq_form( mixed $atts ): bool|string {
 			if ( gettype( $atts ) != 'array' ) {
 				$atts = array();
 			}
@@ -291,16 +288,32 @@ if ( ! class_exists( 'PfCore' ) ) {
 		/**
 		 * Do the shortcode of a THI form.
 		 *
-		 * @param $atts
+		 * @param mixed $atts attributes.
 		 * @return false|string
 		 */
-		public function do_shortcode_thi_form( $atts ): bool|string {
+		public function do_shortcode_thi_form( mixed $atts ): bool|string {
 			if ( gettype( $atts ) != 'array' ) {
 				$atts = array();
 			}
 
 			include_once PF_ABSPATH . 'includes/shortcodes/class-pf-shortcode-thi.php';
 			$shortcode = new Pf_Shortcode_Thi( $atts );
+			return $shortcode->do_shortcode();
+		}
+
+		/**
+		 * Do the shortcode of a TFI form.
+		 *
+		 * @param mixed $atts attributes.
+		 * @return false|string
+		 */
+		public function do_shortcode_tfi_form( mixed $atts ): bool|string {
+			if ( gettype( $atts ) != 'array' ) {
+				$atts = array();
+			}
+
+			include_once PF_ABSPATH . 'includes/shortcodes/class-pf-shortcode-tfi.php';
+			$shortcode = new Pf_Shortcode_Tfi( $atts );
 			return $shortcode->do_shortcode();
 		}
 	}

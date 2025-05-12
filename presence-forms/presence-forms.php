@@ -3,7 +3,7 @@
  * Plugin Name: Presence Forms
  * Description: A plugin for implementing custom scoring forms for Presence Coach.
  * Plugin URI: https://github.com/KiOui/presence-forms
- * Version: 1.0.0
+ * Version: 2.0.0
  * Author: Lars van Rhijn
  * Author URI: https://larsvanrhijn.nl/
  * Text Domain: presence-forms
