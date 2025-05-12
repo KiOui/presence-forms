@@ -134,6 +134,11 @@ if ( ! class_exists( 'Pf_Shortcode_Tfi' ) ) {
 						</div>
 					</div>
 				</div>
+				<div class="pf-reset-container">
+					<button class="pf-reset-form" @click="askReset();">
+						<i class="fa-solid fa-circle-xmark"></i> Verwijder alle antwoorden
+					</button>
+				</div>
 				<div class="pf-result-container">
 					<div v-if="score !== null" class="pf-tfi-form-score">
 						Je hebt <strong>{{ score }}</strong> gescoord op de test.
@@ -155,7 +160,7 @@ if ( ! class_exists( 'Pf_Shortcode_Tfi' ) ) {
 					</div>
 					<div v-else-if="score <= 42" class="pf-result-summary">
 						<p>
-							Dit betekent dat je <strong>matige</strong> ervaart van jouw
+							Dit betekent dat je <strong>matige klachten</strong> ervaart van jouw
 							tinnitus.
 						</p>
 						<?php if ( ! is_null( $this->text ) ) : ?>

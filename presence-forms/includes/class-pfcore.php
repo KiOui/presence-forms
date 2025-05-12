@@ -272,10 +272,10 @@ if ( ! class_exists( 'PfCore' ) ) {
 		/**
 		 * Do the shortcode of a TQ form.
 		 *
-		 * @param $atts
+		 * @param mixed $atts attributes.
 		 * @return false|string
 		 */
-		public function do_shortcode_tq_form( $atts ): bool|string {
+		public function do_shortcode_tq_form( mixed $atts ): bool|string {
 			if ( gettype( $atts ) != 'array' ) {
 				$atts = array();
 			}
@@ -288,10 +288,10 @@ if ( ! class_exists( 'PfCore' ) ) {
 		/**
 		 * Do the shortcode of a THI form.
 		 *
-		 * @param $atts
+		 * @param mixed $atts attributes.
 		 * @return false|string
 		 */
-		public function do_shortcode_thi_form( $atts ): bool|string {
+		public function do_shortcode_thi_form( mixed $atts ): bool|string {
 			if ( gettype( $atts ) != 'array' ) {
 				$atts = array();
 			}
@@ -304,10 +304,10 @@ if ( ! class_exists( 'PfCore' ) ) {
 		/**
 		 * Do the shortcode of a TFI form.
 		 *
-		 * @param $atts
+		 * @param mixed $atts attributes.
 		 * @return false|string
 		 */
-		public function do_shortcode_tfi_form( $atts ): bool|string {
+		public function do_shortcode_tfi_form( mixed $atts ): bool|string {
 			if ( gettype( $atts ) != 'array' ) {
 				$atts = array();
 			}

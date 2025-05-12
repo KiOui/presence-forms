@@ -312,6 +312,10 @@ createApp(
 			setListCookie( COOKIE_NAME_TFI_FORM, answers, 7 );
 			}, eraseAndRedirect( location ) {
 				window.location.href = location;
+			}, askReset() {
+				 if (confirm("Weet je zeker dat je alle antwoorden in het formulier wil wissen?")) {
+					 this.reset();
+				 }
 			}
 		}, computed: {
 			score: function () {

@@ -103,3 +103,25 @@
 .pf-tfi-form-button:hover {
 	opacity: 0.7;
 }
+
+.pf-reset-container {
+	display: flex;
+	justify-content: end;
+	flex-direction: row;
+	margin: 10px 0;
+}
+
+button.pf-reset-form {
+	background-color: unset;
+	color: var(--e-global-color-text);
+	border: unset;
+	text-decoration: underline;
+	padding: 0;
+}
+
+button.pf-reset-form:hover {
+	background-color: unset;
+	color: var(--e-global-color-text);
+	border: unset;
+	opacity: 0.9;
+}
